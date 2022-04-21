@@ -33,6 +33,11 @@ const questions = [
     },
     {
         type: 'input',
+        message: 'Would you like to include a mock-up? if so, please enter the file name of the image as saved in the assets/images folder',
+        name: 'mockup',
+    },
+    {
+        type: 'input',
         message: 'if any, what are the contribution guidelines?',
         name: 'contributing',
     },

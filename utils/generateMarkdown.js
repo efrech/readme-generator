@@ -7,28 +7,28 @@ function renderLicenseBadge(license) {
   }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// this function returns the license link if nothing, returns an empty string
+
 function renderLicenseLink(license) {
-  switch(license) {
+  switch (license) {
     case 'MIT':
-      response = "(https://opensource.org/licenses/MIT)"; 
-      break; 
+      response = "(https://opensource.org/licenses/MIT)";
+      break;
     case 'APACHE_2.0':
-      response = "(https://opensource.org/licenses/Apache-2.0)"; 
-      break; 
+      response = "(https://opensource.org/licenses/Apache-2.0)";
+      break;
     case 'GPLv3':
-      response = "(https://www.gnu.org/licenses/gpl-3.0)"; 
-      break; 
+      response = "(https://www.gnu.org/licenses/gpl-3.0)";
+      break;
     case 'BSD_3':
-      response = "(https://opensource.org/licenses/BSD-3-Clause)"; 
-      break; 
+      response = "(https://opensource.org/licenses/BSD-3-Clause)";
+      break;
   }
   return response;
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// This function returns the license section of README
+
 function renderLicenseSection(license) {
   if (license === "None") {
     return "";
@@ -37,7 +37,15 @@ function renderLicenseSection(license) {
 this project is using: [${license}](${renderLicenseLink(license)})`
   }
 }
-
+//Function to render mock-up
+function renderMockupSection(mockup) {
+  if (mockup === "") {
+    return "";
+  } else {
+    return `## Mock-up
+![Mock-up](assets/images/${mockup} "This is a preview of the app")`
+  }
+}
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
@@ -54,6 +62,7 @@ ${data.purpose}
 ${data.license === "None" ? "" : "- [License](#license)"}
 - [Contributing](#contributing)
 - [Tests](#tests)
+${data.mockup === "" ? "" : "- [Mock-up](#mock-up)"}
 - [Questions](#questions)
 
 ## Installation
@@ -70,8 +79,10 @@ ${data.contributing}
 ## Tests
 ${data.testing}
 
-## Questions
-Questions about this projects❔ Please feel free to contact me at ${data.email} 📧 . You can view more of my projects at https://github.com/${data.githubuser}.
+${renderMockupSection(data.mockup)}
+
+## Questions❓
+Questions about this projects? Please feel free to contact me at ${data.email} 📧 . You can view more of my projects at https://github.com/${data.githubuser}.
 `;
 }
 
